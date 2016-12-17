@@ -25,10 +25,5 @@ function doPost(e) {
   var responsePayloadObject = new RequestHandler().handleRequest(requestPayloadString);
   
   // Serialize the payload object to JSON
-  var responsePayloadJSON = JSON.stringify(responsePayloadObject, null, '  ');
-  
-  // Return the response JSON
-  return ContentService
-    .createTextOutput(responsePayloadJSON)
-    .setMimeType(ContentService.MimeType.JSON);
+  return responsePayloadObject.toHttpResponse();
 }

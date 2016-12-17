@@ -1,5 +1,5 @@
 /*
- * "Constructor" for the EchoAction
+ * "Constructor" for the EchoController
  */
 function EchoController() {
   this.name = 'ECHO';

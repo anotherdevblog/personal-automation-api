@@ -1,3 +1,6 @@
+/*
+ * "Constructor" for the RequestHandler
+ */
 function RequestHandler() {
   /*
    * The controllers for the request handler to call
