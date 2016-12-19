@@ -1,9 +1,9 @@
 /*
- * First run
+ * Token generation
  */
-function firstRun() {
-  var newToken = App.GuidUtility.generate();
-  App.SecurityUtility.addToken(newToken);
+function generateNewToken() {
+  var newToken = new GuidUtility().generate();
+  new SecurityUtility().addToken(newToken);
   Logger.log('Added new auth token ' + newToken);
 }
 
@@ -11,7 +11,7 @@ function firstRun() {
  * Test code
  */
 function test() {
-  Logger.log(new RequestHandler().handleRequest('{"auth_token": "d5c31c9e-5c3a-f29a-be65-86e08be0ff5b", "action": "ECHO.REPEAT", "data": "Hello world" }').serialize());
+  Logger.log(new RequestHandler().handleRequest('{"auth_token": "' + new SecurityUtility().getAuthorizedTokens()[0] + '", "action": "ECHO.REPEAT", "data": "Hello world" }').serialize());
 }
 
 /*

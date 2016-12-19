@@ -28,13 +28,13 @@ function SecurityUtility() {
   * Returns all authorized tokens for the application
   */
   this.getAuthorizedTokens = function () {
-    return App.DbUtility.getOrCreate('SecurityUtility.Tokens', []);
+    return new DbUtility().getOrCreate('SecurityUtility.Tokens', []);
   };
   
   /*
   * Sets the list of all authorized tokens for the application
   */
   this.setAuthorizedTokens = function (tokens) {
-    return App.DbUtility.set('SecurityUtility.Tokens', tokens || []);
+    return new DbUtility().set('SecurityUtility.Tokens', tokens || []);
   };
 }

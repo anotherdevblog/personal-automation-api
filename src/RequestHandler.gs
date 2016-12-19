@@ -25,7 +25,7 @@ function RequestHandler() {
       // Determine which controller action the user wants to take
       var selectedAction = this.findControllerAction(requestObject.action);
       
-      // Call execute on the action and aucceed it
+      // Call execute on the action and succeed it
       return responseObj.succeed(selectedAction.execute(requestObject.data));
     } catch (e) {
       // Log the full error details
@@ -66,7 +66,7 @@ function RequestHandler() {
    * Checks the user's auth token against the allowed tokens. Throws an authorization exception if not allowed
    */
   this.authorize = function(authToken) {
-    if (!App.SecurityUtility.isAuthorized(authToken)) {
+    if (!(new SecurityUtility().isAuthorized(authToken))) {
       throw new WebApiException(ErrorCode.UNAUTHORIZED, 'That auth_token is not authorized'); 
     }
   };
