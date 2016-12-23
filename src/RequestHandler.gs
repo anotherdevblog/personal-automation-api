@@ -6,7 +6,8 @@ function RequestHandler() {
    * The controllers for the request handler to call
    */
   this.controllers = [
-    new EchoController()
+    new EchoController(),
+    new SmartHomeController()
   ];
   
   /*
@@ -27,12 +28,12 @@ function RequestHandler() {
       
       // Call execute on the action and succeed it
       return responseObj.succeed(selectedAction.execute(requestObject.data));
-    } catch (e) {
+    } catch (err) {
       // Log the full error details
-      Logger.log(e.toString());
+      Logger.log(err);
       
       // Fail the response with the appropriate error
-      return responseObj.fail(e instanceof WebApiException ? e : new WebApiException(ErrorCode.UNKNOWN, 'An unknon error has occurred'));
+      return responseObj.fail(err /*instanceof WebApiException ? err : new WebApiException(ErrorCode.UNKNOWN, 'An unknown error has occurred')*/);
     }
   };
   

@@ -7,25 +7,26 @@ function DbUtility() {
   /*
   * Retrieves the value of the specified key (null if not found)
   */
-  this.get = function (key) {
-    var valString = this.storage.getProperty(key);
-    return valString ? JSON.parse(valString) : null;
+  this.getObject = function (key) {
+    var valueJSON = this.storage.getProperty(key);
+    return valueJSON ? JSON.parse(valueJSON) : null;
   };
   
   /*
-  * Sets the value of the specified key
-  */
-  this.set = function (key, valueObj) {
-    this.storage.setProperty(key, JSON.stringify(valueObj));
+   * Sets the value of the specified key
+   */
+  this.setObject = function (key, value) {
+    var valueJSON = JSON.stringify(value);
+    this.storage.setProperty(key, valueJSON);
   };
   
   /*
-  * Gets the value of the specified key, creating it in the storage if not found
-  */
+   * Gets the value of the specified key, creating it in the storage if not found
+   */
   this.getOrCreate = function (key, defaultValueObj) {
-    var valObj = this.get(key);
+    var valObj = this.getObject(key);
     if (!valObj) {
-      this.set(key, defaultValueObj);
+      this.setObject(key, defaultValueObj);
       valObj = defaultValueObj;
     }
     return valObj;

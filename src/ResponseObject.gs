@@ -12,7 +12,7 @@ function ResponseObject() {
   this.succeed = function(data) {
     this.success = true;
     this.error = null;
-    this.data = data;
+    this.data = data || {};
     return this;
   };
   
@@ -22,7 +22,7 @@ function ResponseObject() {
   this.fail = function(webApiException, data) {
     this.success = false;
     this.error = webApiException;
-    this.data = data;
+    this.data = data || {};
     return this;
   };
   

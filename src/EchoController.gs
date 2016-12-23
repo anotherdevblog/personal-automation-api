@@ -3,15 +3,10 @@
  */
 function EchoController() {
   this.name = 'ECHO';
-  
-  /*
-  * "REPEAT" action
-  */
-  this.repeat = function(data) {
-    return data;
-  };
-  
   this.actions = [
-    new ControllerAction('REPEAT', this.repeat)
+    // Returns the data passed in
+    new ControllerAction('REPEAT', function(data) {
+      return data;
+    })
   ];
 }
