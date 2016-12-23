@@ -13,9 +13,7 @@ function IftttUtility() {
       value3: val3
     });
     if (result !== 'Congratulations! You\'ve fired the ' + event + ' event') {
-      var err = 'Error from IFTTT: ' + result; 
-      Logger.log(err);
-      throw err;
+      throw new WebApiException(ErrorCode.IFTTT_ERROR, result);
     }
   };
   

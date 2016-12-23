@@ -9,4 +9,7 @@ var ErrorCode = {
   
   // Auth error codes
   UNAUTHORIZED: 200,
+  
+  // IFTTT error codes
+  IFTTT_ERROR: 300
 };
